@@ -23,7 +23,7 @@ class FavouritesPresenter {
     func getFavs(){
         useCase.FetchFavourites { [weak self] res, err in
             if let error = err {
-                print("\(error.localizedDescription)")
+                Logger.log(error.localizedDescription, category: "FavouritesPresenter")
             }
             
             guard let res = res else {

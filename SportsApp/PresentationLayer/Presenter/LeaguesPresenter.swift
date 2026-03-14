@@ -23,14 +23,15 @@ class LeaguesPresenter {
     func getLeagues(map:Int){
         leaguesUseCase.fetchLeagues(map: map) { result, error in
             if let error = error {
-                print("\(error.localizedDescription)")
+                Logger.log(error.localizedDescription, category: "LeaguesPresenter")
             }
-            
+
+            // MVP nil-safe render: View handles nil by showing empty/error state
             guard let result = result else {
                 self.leaguesViewController?.renderLeagues(result: nil)
                 return
             }
-            
+
             self.leaguesViewController?.renderLeagues(result: result)
         
         }

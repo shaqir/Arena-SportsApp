@@ -22,8 +22,8 @@ class PlayersPresenter {
     
     func getPlayers(map:Int, teamId:Int){
         playersUsecase.fetchPlayers(map: map, teamId: teamId) { result, error in
-            if let error = error{
-                print("\(error.localizedDescription)")
+            if let error = error {
+                Logger.log(error.localizedDescription, category: "PlayersPresenter")
             }
             guard let result = result else {
                 self.playersViewController?.renderPlayers(result: nil)
@@ -36,8 +36,8 @@ class PlayersPresenter {
     
     func getTennisPlayers(map:Int, leagueId:Int){
         playersUsecase.fetchTennisPlayers(map: map, leagueId: leagueId) { result, error in
-            if let error = error{
-                print("\(error.localizedDescription)")
+            if let error = error {
+                Logger.log(error.localizedDescription, category: "PlayersPresenter")
             }
             guard let result = result else {
                 self.playersViewController?.renderPlayers(result: nil)

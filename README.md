@@ -44,6 +44,12 @@ _Arena_ is an iOS sports app built with Swift, following the Clean Architecture 
 - Unit Testing using XCTest
 
 
+## 📸 Screenshots
+
+| Sports | Leagues | League Events | Team Details |
+|--------|---------|---------------|--------------|
+| ![Sports](screenshots/sports.png) | ![Leagues](screenshots/leagues.png) | ![Events](screenshots/events.png) | ![Team](screenshots/team.png) |
+
 ## 📱 Tech Stack
 - Swift
 - Alamofire – For all API requests

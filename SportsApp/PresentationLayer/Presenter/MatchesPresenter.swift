@@ -22,24 +22,26 @@ class MatchesPresenter {
     
     func getUpcomingMatches(map:Int, from:String, to:String, leagueId:String){
         fixturesUsecase.fetchFixtures(map:map, from:from, to: to, leagueId: leagueId) {[weak self] result, err in
-            if let err = err{
-                print("\(err.localizedDescription)")
+            if let err = err {
+                Logger.log(err.localizedDescription, category: "MatchesPresenter")
             }
+            // MVP nil-safe render: View handles nil by showing empty/error state
             guard let result = result else {
                 self?.matchesViewController?.renderUpcomingMatches(result: nil)
                 return
             }
-            
+
             self?.matchesViewController?.renderUpcomingMatches(result: result)
         }
     }
     
     func getPastMatches(map:Int, from:String, to:String, leagueId:String){
         fixturesUsecase.fetchFixtures(map:map,from:from, to: to, leagueId: leagueId) {[weak self] result, err in
-            if let err = err{
-                print("\(err.localizedDescription)")
+            if let err = err {
+                Logger.log(err.localizedDescription, category: "MatchesPresenter")
                 return
             }
+            // MVP nil-safe render: View handles nil by showing empty/error state
             guard let result = result else {
                 self?.matchesViewController?.renderPastMatches(result: nil)
                 return
